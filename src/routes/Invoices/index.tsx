@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useSearchParams } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
 import { getInvoices } from "../../data";
 import "./styles.css";
 import QueryLink from "../../components/QueryLink";
@@ -8,14 +8,8 @@ export default function Invoices() {
   let [searchParams, setSearchParams] = useSearchParams();
   return (
     <div style={{ display: "flex" }}>
-      <nav
-        style={{
-          borderRight: "solid 1px",
-          padding: "1rem",
-        }}
-      > 
-        <input
-          value={searchParams.get("name") || ""}
+      <nav style={{borderRight: "solid 1px",padding: "1rem"}}>
+        <input value={searchParams.get("name") || ""}
           onChange={(event) => {
             let name = event.target.value;
             if (name) {
@@ -23,8 +17,8 @@ export default function Invoices() {
             } else {
               setSearchParams({});
             }
-          }}
-        />
+          }}/>
+
         {invoices
         .filter((invoice) => {
             let name = searchParams.get("name");
